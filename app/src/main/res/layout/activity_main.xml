@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/margin_top"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.34" />
+
+
+    <TextView
+        android:id="@+id/result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/text_result"
+        android:paddingEnd="15dp"
+        android:paddingStart="15dp"
+        style = "@style/style_result"
+        app:layout_constraintBottom_toTopOf="@id/result_output"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/margin_top"
+        android:paddingBottom = "10dp"/>
+
+    <TextView
+        android:id="@+id/result_output"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/text_result_output"
+        android:paddingEnd="15dp"
+        android:paddingStart="15dp"
+        style = "@style/style_result_output"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/result"
+        app:layout_constraintBottom_toTopOf="@+id/group_buttons_vertical"
+        android:paddingBottom = "20dp"/>
+
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/group_buttons_vertical"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:backgroundTint="@color/teal_700"
+        android:background="@color/teal_200"
+        app:constraint_referenced_ids="button_del_all,button_percent,button_del,button_division,
+        button_7,button_8,button_9,button_plus,button_4,button_5,button_6,button_minus,
+button_mul,button_1,button_2,button_3,button_00,button_0,button_comma,button_equally"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/result_output" />
+
+    <Button
+        android:id="@+id/button_del_all"
+        android:text="@string/text_c"
+        style="@style/style_button"
+        android:onClick= "del_all_text"
+        app:layout_constraintBottom_toTopOf="@id/button_7"
+        app:layout_constraintEnd_toStartOf="@id/button_percent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/group_buttons_vertical" />
+
+    <Button
+        android:id="@+id/button_percent"
+        android:text="@string/text_percent"
+        style="@style/style_button"
+        android:onClick= "retext_view"
+        app:layout_constraintBottom_toTopOf="@id/button_8"
+        app:layout_constraintEnd_toStartOf="@id/button_del"
+        app:layout_constraintStart_toEndOf="@+id/button_del_all"
+        app:layout_constraintTop_toTopOf="@id/group_buttons_vertical" />
+
+    <Button
+        android:id="@+id/button_del"
+        style="@style/style_button"
+        android:text="@string/text_del"
+        android:onClick= "del_text"
+        app:layout_constraintBottom_toTopOf="@id/button_9"
+        app:layout_constraintEnd_toStartOf="@id/button_division"
+        app:layout_constraintStart_toEndOf="@id/button_percent"
+        app:layout_constraintTop_toTopOf="@id/group_buttons_vertical" />
+
+    <Button
+        android:id="@+id/button_division"
+        android:text="@string/text_division"
+        style="@style/style_button"
+        android:onClick= "retext_view"
+        app:layout_constraintBottom_toTopOf="@id/button_mul"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/button_del"
+        app:layout_constraintTop_toTopOf="@id/group_buttons_vertical" />
+
+    <Button
+        android:id="@+id/button_7"
+        style="@style/style_button"
+        android:text="@string/text_7"
+        android:onClick= "retext_view"
+        app:layout_constraintBottom_toTopOf="@id/button_4"
+        app:layout_constraintEnd_toStartOf="@id/button_8"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/button_del_all" />
+
+    <Button
+        android:id="@+id/button_8"
+        style="@style/style_button"
+        android:text="@string/text_8"
+        android:onClick= "retext_view"
+        app:layout_constraintBottom_toTopOf="@id/button_5"
+        app:layout_constraintEnd_toStartOf="@id/button_9"
+        app:layout_constraintStart_toEndOf="@id/button_7"
+        app:layout_constraintTop_toBottomOf="@id/button_percent" />
+
+    <Button
+        android:id="@+id/button_9"
+        style="@style/style_button"
+        android:text="@string/text_9"
+        android:onClick= "retext_view"
+        app:layout_constraintBottom_toTopOf="@id/button_6"
+        app:layout_constraintEnd_toStartOf="@id/button_mul"
+        app:layout_constraintStart_toEndOf="@id/button_8"
+        app:layout_constraintTop_toBottomOf="@id/button_del" />
+
+    <Button
+        android:id="@+id/button_mul"
+        style="@style/style_button"
+        android:text="@string/text_mul"
+        android:onClick= "retext_view"
+        app:layout_constraintBottom_toTopOf="@id/button_minus"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/button_9"
+        app:layout_constraintTop_toBottomOf="@id/button_division" />
+
+    <Button
+        android:id="@+id/button_4"
+        style="@style/style_button"
+        android:text="@string/text_4"
+        android:onClick= "retext_view"
+        app:layout_constraintBottom_toTopOf="@+id/button_1"
+        app:layout_constraintEnd_toStartOf="@id/button_5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_7" />
+
+    <Button
+        android:id="@+id/button_5"
+        style="@style/style_button"
+        android:text="@string/text_5"
+        android:onClick= "retext_view"
+        app:layout_constraintBottom_toTopOf="@id/button_2"
+        app:layout_constraintEnd_toStartOf="@id/button_6"
+        app:layout_constraintStart_toEndOf="@id/button_4"
+        app:layout_constraintTop_toBottomOf="@id/button_8" />
+
+    <Button
+        android:id="@+id/button_6"
+        style="@style/style_button"
+        android:text="@string/text_6"
+        android:onClick= "retext_view"
+        app:layout_constraintBottom_toTopOf="@id/button_3"
+        app:layout_constraintEnd_toStartOf="@id/button_minus"
+        app:layout_constraintStart_toEndOf="@id/button_5"
+        app:layout_constraintTop_toBottomOf="@id/button_9" />
+
+    <Button
+        android:id="@+id/button_minus"
+        style="@style/style_button"
+        android:text="@string/text_minus"
+        android:onClick= "retext_view"
+        app:layout_constraintBottom_toTopOf="@+id/button_plus"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/button_6"
+        app:layout_constraintTop_toBottomOf="@id/button_mul" />
+
+    <Button
+        android:id="@+id/button_1"
+        style="@style/style_button"
+        android:text="@string/text_1"
+        android:onClick= "retext_view"
+        app:layout_constraintBottom_toTopOf="@id/button_00"
+        app:layout_constraintEnd_toStartOf="@id/button_2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/button_4" />
+
+    <Button
+        android:id="@+id/button_2"
+        style="@style/style_button"
+        android:text="@string/text_2"
+        android:onClick= "retext_view"
+        app:layout_constraintBottom_toTopOf="@id/button_0"
+        app:layout_constraintEnd_toStartOf="@id/button_3"
+        app:layout_constraintStart_toEndOf="@id/button_1"
+        app:layout_constraintTop_toBottomOf="@id/button_5" />
+
+    <Button
+        android:id="@+id/button_3"
+        style="@style/style_button"
+        android:text="@string/text_3"
+        android:onClick= "retext_view"
+        app:layout_constraintBottom_toTopOf="@id/button_comma"
+        app:layout_constraintEnd_toStartOf="@id/button_plus"
+        app:layout_constraintStart_toEndOf="@id/button_2"
+        app:layout_constraintTop_toBottomOf="@id/button_6" />
+
+    <Button
+        android:id="@+id/button_plus"
+        style="@style/style_button"
+        android:text="@string/text_plus"
+        android:onClick= "retext_view"
+        app:layout_constraintBottom_toTopOf="@id/button_equally"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/button_3"
+        app:layout_constraintTop_toBottomOf="@id/button_minus" />
+
+
+    <Button
+        android:id="@+id/button_00"
+        style="@style/style_button"
+        android:text="@string/text_00"
+        android:onClick= "retext_view"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/button_0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/button_1" />
+
+    <Button
+        android:id="@+id/button_0"
+        style="@style/style_button"
+        android:text="@string/text_0"
+        android:onClick= "retext_view"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/button_comma"
+        app:layout_constraintStart_toEndOf="@id/button_00"
+        app:layout_constraintTop_toBottomOf="@id/button_2" />
+
+    <Button
+        android:id="@+id/button_comma"
+        style="@style/style_button"
+        android:text="@string/text_comma"
+        android:onClick= "retext_view"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/button_equally"
+        app:layout_constraintStart_toEndOf="@id/button_0"
+        app:layout_constraintTop_toBottomOf="@id/button_3" />
+
+    <Button
+        android:id="@+id/button_equally"
+        style="@style/style_button"
+        android:onClick="fun_equally"
+        android:text="@string/text_equally"
+        app:layout_constraintBottom_toBottomOf="@id/group_buttons_vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/button_comma"
+        app:layout_constraintTop_toBottomOf="@id/button_plus" />
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
