@@ -19,7 +19,8 @@
     <string name="text_plus">+</string>
     <string name="text_00">00</string>
     <string name="text_0">0</string>
-    <string name="text_comma">,</string>
+    <string name="text_comma">.</string>
     <string name="text_equally">=</string>
     <string name="text_result_output"></string>
+
 </resources>

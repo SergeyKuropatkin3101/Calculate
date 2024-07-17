@@ -22,6 +22,7 @@
         padd
     </style>
 
+
     <style name="style_button" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="android:textSize">24sp</item>
         <item name="android:layout_width">0dp</item>
