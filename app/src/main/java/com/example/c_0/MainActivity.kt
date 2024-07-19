@@ -199,7 +199,7 @@ class MainActivity : AppCompatActivity() {
         var resultDouble = 0.0
         var result_in = sharedpreferences.getString(KEY_RESULT_IN, "").toString()
         if (result_in.isNotEmpty() ){
-            if (result_in.last() in "+-*/"){
+            if (result_in.last() in "+-*/%"){
                 result_in = result_in.substring(0,result_in.length-1)
             }
         }
@@ -210,31 +210,39 @@ class MainActivity : AppCompatActivity() {
         var k2 = 0.0
         var index1: Int
         var index2: Int
+        var index3: Int
         var FlagPos1: Boolean
         var FlagPos2: Boolean
-        if(('*' in result_in) or ('/' in result_in)){
-            var count_oper = result_in.count{ (it == '/') or (it == '*') }
+        if(('*' in result_in) or ('/' in result_in) or ('%' in result_in)){
+            var count_oper = result_in.count{ (it == '/') or (it == '*') or (it == '%') }
 //            Log.d("count_oper", count_oper.toString())
             for (i in 0..count_oper-1){
                 pos = 0
                 k = 0.0
                 index1 = result_in.indexOf("*")
                 index2 = result_in.indexOf("/")
-                if(index1*index2>0){
-                    if (index1 <= index2){
-                        pos = index1
-                    }
-                    else{
-                        pos = index2
-                    }
+                index3 = result_in.indexOf("%")
+                val List_index = ArrayList<Int>()
+                if (index1>-1){
+                    List_index.add(index1)
                 }
-                else {
-                    if (index1 != -1) {
-                        pos = index1
-                    } else {
-                        pos = index2
-                    }
+                if (index2>-1){
+                    List_index.add(index2)
                 }
+                if (index3>-1){
+                    List_index.add(index3)
+                }
+                var MinIndex = List_index.min()
+                if (MinIndex == index1){
+                    pos = index1
+                }
+                else if (MinIndex == index2){
+                    pos = index2
+                }
+                else{
+                    pos = index3
+                }
+
                 FlagPos1 = true
                 FlagPos2 = true
 //                Log.e("pos", pos.toString())
@@ -245,7 +253,7 @@ class MainActivity : AppCompatActivity() {
                         FlagPos1 = false
                         pos1 = 0
                     }
-                    if (FlagPos1 && (result_in[pos-j] in "+-*/")){
+                    if (FlagPos1 && (result_in[pos-j] in "+-*/%")){
                         k = result_in.substring(pos-j+1,pos).toDouble()
                         FlagPos1 = false
                         pos1 = pos-j+1
@@ -260,7 +268,7 @@ class MainActivity : AppCompatActivity() {
                         FlagPos2 = false
                         pos2 = pos+j
                     }
-                    if (FlagPos2 && (result_in[pos+j] in "+-*/")){
+                    if (FlagPos2 && (result_in[pos+j] in "+-*/%")){
                         k2 = result_in.substring(pos+1,pos+j).toDouble()
                         FlagPos2 = false
                         pos2 = pos+j
@@ -270,13 +278,15 @@ class MainActivity : AppCompatActivity() {
                 if (result_in[pos] == '*'){
                     resultDouble = k*k2
                 }
+                else if (result_in[pos] == '%'){
+                    resultDouble = k/100.0*k2
+                }
                 else{
                     if (k2 != 0.0){
                         resultDouble = k/k2
-
                     }
                     else{
-                        return "Делить на 0 нельзя!"
+                        return getString(R.string.DivisionBy0)
                     }
                 }
 //                if (result_in[pos1+1] in "+-*/"){
@@ -284,7 +294,14 @@ class MainActivity : AppCompatActivity() {
 //                }
                 Log.e("123",result_in.substring(0,pos1) )
                 Log.e("1233",result_in.substring(pos2))
-                result_in = result_in.substring(0,pos1)+resultDouble.toString()+result_in.substring(pos2)
+                if (Math.round(resultDouble)/1.0 == resultDouble){
+                    result_in = result_in.substring(0,pos1)+Math.round(resultDouble).toString()+result_in.substring(pos2)
+
+                }
+                else {
+                    result_in = result_in.substring(0,pos1)+resultDouble.toString()+result_in.substring(pos2)
+
+                }
 
                 Log.e("1236",result_in )
             }
@@ -338,9 +355,14 @@ class MainActivity : AppCompatActivity() {
                 }
                 i +=1
             }
-
-        result = resultDouble.toString()
-        Log.d("myTag", result);
+        Log.d("my", Math.round(resultDouble).toString())
+        if (Math.round(resultDouble)/1.0 == resultDouble){
+            result = Math.round(resultDouble).toString()
+        }
+        else {
+            result = resultDouble.toString()
+        }
+        Log.d("myTag", result)
         return result;
     }
     fun del_text(v: View) {
@@ -361,7 +383,6 @@ class MainActivity : AppCompatActivity() {
 
                 if(result_in.length >20){
                     result_in = result_in.subSequence(result_in.length-20,result_in.length).toString()
-                    Toast.makeText(this,"klsn", Toast.LENGTH_SHORT).show()
                 }
             }
             else{

@@ -22,5 +22,6 @@
     <string name="text_comma">.</string>
     <string name="text_equally">=</string>
     <string name="text_result_output"></string>
+    <string name="DivisionBy0">Деление на 0!</string>
 
 </resources>
