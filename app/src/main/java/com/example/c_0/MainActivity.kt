@@ -66,8 +66,14 @@ class MainActivity : AppCompatActivity() {
         var textView_b_text = textView_b.text.toString()
         textView_r_out = findViewById(R.id.result_output)
         if (result_in.isEmpty()){
-            if (textView_b_text in "1234567890423") {
+            if (textView_b_text in "1234567890") {
                 result_in += textView_b_text
+                editor.putString(KEY_RESULT_IN, result_in)
+                editor.putString(KEY_RESULT_OUT, result_in)
+                editor.apply()
+            }
+            else if(textView_b_text == ".") {
+                result_in += "0"+textView_b_text
                 editor.putString(KEY_RESULT_IN, result_in)
                 editor.putString(KEY_RESULT_OUT, result_in)
                 editor.apply()
@@ -78,13 +84,39 @@ class MainActivity : AppCompatActivity() {
         }
         else{
 
+            if (textView_b_text == "."){
+                if (('+' in result_in) or
+                    ('-' in result_in) or
+                    ('%' in result_in) or
+                    ('*' in result_in)or
+                    ('/' in result_in)){
+                    var i = result_in.length-1
+                    var flag = true
+                    while(flag){
+                        if (result_in[i] in "+-/*%"){
+                            flag = false
+                            if ('.' in result_in.substring(i+1,result_in.length)){
+                                textView_b_text = ""
+                            }
+                        }
+                        i -= 1
+                    }
+                }
+                else{
+                    if ('.' in result_in){
+                        textView_b_text = ""
+                    }
+                }
+            }
+
+
             if ((result_in.endsWith('+')
                         or result_in.endsWith('-')
                         or result_in.endsWith('/')
                         or result_in.endsWith('*')
                         or result_in.endsWith('%')
-                        or result_in.endsWith(','))
-                        && (textView_b_text in ",+-/*%"))
+                        or result_in.endsWith('.'))
+                        && (textView_b_text in ".+-/*%"))
             {
                 result_in = result_in.subSequence(0,result_in.length-1).toString()
             }
@@ -101,7 +133,6 @@ class MainActivity : AppCompatActivity() {
 
                 if(result_in.length >20){
                     result_in = result_in.subSequence(result_in.length-20,result_in.length).toString()
-                    Toast.makeText(this,"klsn", Toast.LENGTH_SHORT).show()
                 }
 
 
