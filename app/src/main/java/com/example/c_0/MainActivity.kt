@@ -292,8 +292,8 @@ class MainActivity : AppCompatActivity() {
 //                if (result_in[pos1+1] in "+-*/"){
 //                    pos1 +=1
 //                }
-                Log.e("123",result_in.substring(0,pos1) )
-                Log.e("1233",result_in.substring(pos2))
+//                Log.e("123",result_in.substring(0,pos1) )
+//                Log.e("1233",result_in.substring(pos2))
                 if (Math.round(resultDouble)/1.0 == resultDouble){
                     result_in = result_in.substring(0,pos1)+Math.round(resultDouble).toString()+result_in.substring(pos2)
 
@@ -303,7 +303,7 @@ class MainActivity : AppCompatActivity() {
 
                 }
 
-                Log.e("1236",result_in )
+//                Log.e("1236",result_in )
             }
         }
             pos = 0
@@ -332,12 +332,12 @@ class MainActivity : AppCompatActivity() {
                 }
             }
             resultDouble = result_in.substring(0,pos).toDouble()
-            Log.d("mypos", result_in[pos].toString())
+//            Log.d("mypos", result_in[pos].toString())
             var i = pos+1  ///3+ 3* 3
             while(i < result_in.length){
-                Log.e("my2", result_in[i].toString())
-                Log.e("my_i", i.toString())
-                Log.e("mylength", result_in.length.toString())
+//                Log.e("my2", result_in[i].toString())
+//                Log.e("my_i", i.toString())
+//                Log.e("mylength", result_in.length.toString())
                 if ((result_in[i] in "+-") or (i == result_in.length-1)){
                     if (i == result_in.length-1){
                         i +=1
@@ -355,14 +355,14 @@ class MainActivity : AppCompatActivity() {
                 }
                 i +=1
             }
-        Log.d("my", Math.round(resultDouble).toString())
+//        Log.d("my", Math.round(resultDouble).toString())
         if (Math.round(resultDouble)/1.0 == resultDouble){
             result = Math.round(resultDouble).toString()
         }
         else {
             result = resultDouble.toString()
         }
-        Log.d("myTag", result)
+//        Log.d("myTag", result)
         return result;
     }
     fun del_text(v: View) {
