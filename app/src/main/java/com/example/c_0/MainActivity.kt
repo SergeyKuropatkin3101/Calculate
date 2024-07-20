@@ -161,6 +161,7 @@ class MainActivity : AppCompatActivity() {
     fun del_all_text(v: View) {
         textView_r = findViewById(R.id.result)
         textView_r_out = findViewById(R.id.result_output)
+        val res = ""
         val text_res = ""
         textView_r.text = text_res
         textView_r_out.text = text_res
