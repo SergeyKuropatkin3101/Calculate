@@ -8,15 +8,16 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/margin_top"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="horizontal"
-        app:layout_constraintGuide_end="431dp" />
+        app:layout_constraintGuide_percent="0.34" />
+
 
     <TextView
-
         android:id="@+id/result"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -24,20 +25,35 @@
         android:paddingEnd="15dp"
         android:paddingStart="15dp"
         style = "@style/style_result"
-        app:layout_constraintBottom_toTopOf="@id/group_buttons_vertical"
+        app:layout_constraintBottom_toTopOf="@id/result_output"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/margin_top"
-        android:paddingBottom = "70dp"/>
+        android:paddingBottom = "10dp"/>
 
+    <TextView
+        android:id="@+id/result_output"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/text_result_output"
+        android:paddingEnd="15dp"
+        android:paddingStart="15dp"
+        style = "@style/style_result_output"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/result"
+        app:layout_constraintBottom_toTopOf="@+id/group_buttons_vertical"
+        android:paddingBottom = "20dp"/>
 
 
     <androidx.constraintlayout.widget.Group
         android:id="@+id/group_buttons_vertical"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:padding="20dp"
+        android:backgroundTint="@color/teal_700"
         android:background="@color/teal_200"
         app:constraint_referenced_ids="button_del_all,button_percent,button_del,button_division,
         button_7,button_8,button_9,button_plus,button_4,button_5,button_6,button_minus,
@@ -45,14 +61,12 @@ button_mul,button_1,button_2,button_3,button_00,button_0,button_comma,button_equ
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/result" />
+        app:layout_constraintTop_toBottomOf="@id/result_output" />
 
     <Button
         android:id="@+id/button_del_all"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
         android:text="@string/text_c"
-        android:textSize="24sp"
+        style="@style/style_button"
         android:onClick= "del_all_text"
         app:layout_constraintBottom_toTopOf="@id/button_7"
         app:layout_constraintEnd_toStartOf="@id/button_percent"
@@ -61,10 +75,8 @@ button_mul,button_1,button_2,button_3,button_00,button_0,button_comma,button_equ
 
     <Button
         android:id="@+id/button_percent"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
         android:text="@string/text_percent"
-        android:textSize="24sp"
+        style="@style/style_button"
         android:onClick= "retext_view"
         app:layout_constraintBottom_toTopOf="@id/button_8"
         app:layout_constraintEnd_toStartOf="@id/button_del"
@@ -73,10 +85,8 @@ button_mul,button_1,button_2,button_3,button_00,button_0,button_comma,button_equ
 
     <Button
         android:id="@+id/button_del"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        style="@style/style_button"
         android:text="@string/text_del"
-        android:textSize="24sp"
         android:onClick= "del_text"
         app:layout_constraintBottom_toTopOf="@id/button_9"
         app:layout_constraintEnd_toStartOf="@id/button_division"
@@ -85,10 +95,8 @@ button_mul,button_1,button_2,button_3,button_00,button_0,button_comma,button_equ
 
     <Button
         android:id="@+id/button_division"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
         android:text="@string/text_division"
-        android:textSize="24sp"
+        style="@style/style_button"
         android:onClick= "retext_view"
         app:layout_constraintBottom_toTopOf="@id/button_mul"
         app:layout_constraintEnd_toEndOf="parent"
@@ -97,10 +105,8 @@ button_mul,button_1,button_2,button_3,button_00,button_0,button_comma,button_equ
 
     <Button
         android:id="@+id/button_7"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        style="@style/style_button"
         android:text="@string/text_7"
-        android:textSize="24sp"
         android:onClick= "retext_view"
         app:layout_constraintBottom_toTopOf="@id/button_4"
         app:layout_constraintEnd_toStartOf="@id/button_8"
@@ -109,10 +115,8 @@ button_mul,button_1,button_2,button_3,button_00,button_0,button_comma,button_equ
 
     <Button
         android:id="@+id/button_8"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        style="@style/style_button"
         android:text="@string/text_8"
-        android:textSize="24sp"
         android:onClick= "retext_view"
         app:layout_constraintBottom_toTopOf="@id/button_5"
         app:layout_constraintEnd_toStartOf="@id/button_9"
@@ -121,10 +125,8 @@ button_mul,button_1,button_2,button_3,button_00,button_0,button_comma,button_equ
 
     <Button
         android:id="@+id/button_9"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        style="@style/style_button"
         android:text="@string/text_9"
-        android:textSize="24sp"
         android:onClick= "retext_view"
         app:layout_constraintBottom_toTopOf="@id/button_6"
         app:layout_constraintEnd_toStartOf="@id/button_mul"
@@ -133,10 +135,8 @@ button_mul,button_1,button_2,button_3,button_00,button_0,button_comma,button_equ
 
     <Button
         android:id="@+id/button_mul"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        style="@style/style_button"
         android:text="@string/text_mul"
-        android:textSize="24sp"
         android:onClick= "retext_view"
         app:layout_constraintBottom_toTopOf="@id/button_minus"
         app:layout_constraintEnd_toEndOf="parent"
@@ -145,10 +145,8 @@ button_mul,button_1,button_2,button_3,button_00,button_0,button_comma,button_equ
 
     <Button
         android:id="@+id/button_4"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        style="@style/style_button"
         android:text="@string/text_4"
-        android:textSize="24sp"
         android:onClick= "retext_view"
         app:layout_constraintBottom_toTopOf="@+id/button_1"
         app:layout_constraintEnd_toStartOf="@id/button_5"
@@ -157,10 +155,8 @@ button_mul,button_1,button_2,button_3,button_00,button_0,button_comma,button_equ
 
     <Button
         android:id="@+id/button_5"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        style="@style/style_button"
         android:text="@string/text_5"
-        android:textSize="24sp"
         android:onClick= "retext_view"
         app:layout_constraintBottom_toTopOf="@id/button_2"
         app:layout_constraintEnd_toStartOf="@id/button_6"
@@ -169,10 +165,8 @@ button_mul,button_1,button_2,button_3,button_00,button_0,button_comma,button_equ
 
     <Button
         android:id="@+id/button_6"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        style="@style/style_button"
         android:text="@string/text_6"
-        android:textSize="24sp"
         android:onClick= "retext_view"
         app:layout_constraintBottom_toTopOf="@id/button_3"
         app:layout_constraintEnd_toStartOf="@id/button_minus"
@@ -181,10 +175,8 @@ button_mul,button_1,button_2,button_3,button_00,button_0,button_comma,button_equ
 
     <Button
         android:id="@+id/button_minus"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        style="@style/style_button"
         android:text="@string/text_minus"
-        android:textSize="24sp"
         android:onClick= "retext_view"
         app:layout_constraintBottom_toTopOf="@+id/button_plus"
         app:layout_constraintEnd_toEndOf="parent"
@@ -193,10 +185,8 @@ button_mul,button_1,button_2,button_3,button_00,button_0,button_comma,button_equ
 
     <Button
         android:id="@+id/button_1"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        style="@style/style_button"
         android:text="@string/text_1"
-        android:textSize="24sp"
         android:onClick= "retext_view"
         app:layout_constraintBottom_toTopOf="@id/button_00"
         app:layout_constraintEnd_toStartOf="@id/button_2"
@@ -205,10 +195,8 @@ button_mul,button_1,button_2,button_3,button_00,button_0,button_comma,button_equ
 
     <Button
         android:id="@+id/button_2"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        style="@style/style_button"
         android:text="@string/text_2"
-        android:textSize="24sp"
         android:onClick= "retext_view"
         app:layout_constraintBottom_toTopOf="@id/button_0"
         app:layout_constraintEnd_toStartOf="@id/button_3"
@@ -217,10 +205,8 @@ button_mul,button_1,button_2,button_3,button_00,button_0,button_comma,button_equ
 
     <Button
         android:id="@+id/button_3"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        style="@style/style_button"
         android:text="@string/text_3"
-        android:textSize="24sp"
         android:onClick= "retext_view"
         app:layout_constraintBottom_toTopOf="@id/button_comma"
         app:layout_constraintEnd_toStartOf="@id/button_plus"
@@ -229,10 +215,8 @@ button_mul,button_1,button_2,button_3,button_00,button_0,button_comma,button_equ
 
     <Button
         android:id="@+id/button_plus"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        style="@style/style_button"
         android:text="@string/text_plus"
-        android:textSize="24sp"
         android:onClick= "retext_view"
         app:layout_constraintBottom_toTopOf="@id/button_equally"
         app:layout_constraintEnd_toEndOf="parent"
@@ -242,10 +226,8 @@ button_mul,button_1,button_2,button_3,button_00,button_0,button_comma,button_equ
 
     <Button
         android:id="@+id/button_00"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        style="@style/style_button"
         android:text="@string/text_00"
-        android:textSize="24sp"
         android:onClick= "retext_view"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/button_0"
@@ -254,10 +236,8 @@ button_mul,button_1,button_2,button_3,button_00,button_0,button_comma,button_equ
 
     <Button
         android:id="@+id/button_0"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        style="@style/style_button"
         android:text="@string/text_0"
-        android:textSize="24sp"
         android:onClick= "retext_view"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/button_comma"
@@ -266,10 +246,8 @@ button_mul,button_1,button_2,button_3,button_00,button_0,button_comma,button_equ
 
     <Button
         android:id="@+id/button_comma"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        style="@style/style_button"
         android:text="@string/text_comma"
-        android:textSize="24sp"
         android:onClick= "retext_view"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/button_equally"
@@ -278,14 +256,15 @@ button_mul,button_1,button_2,button_3,button_00,button_0,button_comma,button_equ
 
     <Button
         android:id="@+id/button_equally"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        style="@style/style_button"
+        android:onClick="fun_equally"
         android:text="@string/text_equally"
-        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="@id/group_buttons_vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/button_comma"
         app:layout_constraintTop_toBottomOf="@id/button_plus" />
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
