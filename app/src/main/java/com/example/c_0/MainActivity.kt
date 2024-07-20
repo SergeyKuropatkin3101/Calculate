@@ -71,10 +71,10 @@ class MainActivity : AppCompatActivity() {
             textView_r.text = textView_r_text
         }
 
-        fun onDestroy() {
-            super.onDestroy()
-
-        }
+//        fun onDestroy() {
+//            super.onDestroy()
+//
+//        }
     }
 
 
