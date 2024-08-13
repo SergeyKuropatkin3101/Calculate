@@ -1,8 +1,5 @@
 package com.example.c_0
 
-import android.animation.Animator
-import android.animation.AnimatorSet
-import android.animation.ObjectAnimator
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
@@ -10,9 +7,6 @@ import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
-import android.view.ViewPropertyAnimator;
-import android.view.animation.AccelerateDecelerateInterpolator
-import android.widget.Toast
 import androidx.core.view.WindowInsetsCompat
 import android.content.SharedPreferences
 import android.content.Context
@@ -20,12 +14,12 @@ import android.util.Log
 
 class MainActivity : AppCompatActivity() {
     private lateinit var sharedpreferences: SharedPreferences
-    private var KEY_RESULT_IN = "KEY_RESULT_IN"
-    private var KEY_RESULT_OUT = "KEY_RESULT_OUT"
+    private val KEY_RESULT_IN = "KEY_RESULT_IN"
+    private val KEY_RESULT_OUT = "KEY_RESULT_OUT"
     private val SHARED_PREFS = "shared_prefs"
 
-    private lateinit var textView_r: TextView
-    private lateinit var textView_r_out: TextView
+    private lateinit var textCalculateAndResault: TextView
+    private lateinit var textResaultNow: TextView
 
 
 
@@ -38,11 +32,12 @@ class MainActivity : AppCompatActivity() {
         editor.putString(KEY_RESULT_IN, "")
         editor.putString(KEY_RESULT_OUT, "")
         editor.apply()
-        /*ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
-        }*/
+        }
+
     }
 
     private lateinit var textView_b: Button
@@ -53,33 +48,27 @@ class MainActivity : AppCompatActivity() {
         var result_in = sharedpreferences.getString(KEY_RESULT_IN, "").toString()
         var result_out = sharedpreferences.getString(KEY_RESULT_OUT, "").toString()
 
-        textView_r = findViewById(R.id.result)
+        textCalculateAndResault = findViewById(R.id.result)
 
-
-
-
-
-
-
-        var textView_r_text = textView_r.text.toString()
+        var textView_r_text = textCalculateAndResault.text.toString()
         textView_b = findViewById(v.id)
         var textView_b_text = textView_b.text.toString()
-        textView_r_out = findViewById(R.id.result_output)
+        textResaultNow = findViewById(R.id.result_output)
         if (result_in.isEmpty()){
-            if (textView_b_text in "1234567890") {
+            if (textView_b_text in getString(R.string.all_numbers)) {
                 result_in += textView_b_text
                 editor.putString(KEY_RESULT_IN, result_in)
                 editor.putString(KEY_RESULT_OUT, result_in)
                 editor.apply()
             }
             else if(textView_b_text == ".") {
-                result_in += "0"+textView_b_text
+                result_in += getString(R.string.zero)+textView_b_text
                 editor.putString(KEY_RESULT_IN, result_in)
                 editor.putString(KEY_RESULT_OUT, result_in)
                 editor.apply()
             }
             else{
-                textView_r.text = ""
+                textCalculateAndResault.text = ""
             }
         }
         else{
@@ -125,27 +114,8 @@ class MainActivity : AppCompatActivity() {
             editor.putString(KEY_RESULT_OUT, result_in)
             editor.apply()
 
-            if (result_in.length >11){
-                textView_r.textSize = 30F
-                textView_r_out.textSize = 25F
-                textView_r.setPadding(15,33,15,50)
-                textView_r_out.setPadding(15,20,15,50)
-
-                if(result_in.length >20){
-                    result_in = result_in.subSequence(result_in.length-20,result_in.length).toString()
-                }
-
-
-            }
-            else{
-                textView_r.textSize = 50F
-                textView_r_out.textSize = 40F
-                textView_r.setPadding(15,0,15,20)
-                textView_r_out.setPadding(15,0,15,40)
-
-
-
-
+            if (result_in.length >20){
+                result_in = result_in.subSequence(result_in.length-20,result_in.length).toString()
             }
             //Toast.makeText(this,result_in, Toast.LENGTH_SHORT).show()
 
@@ -153,26 +123,21 @@ class MainActivity : AppCompatActivity() {
 
 
         }
-        textView_r.text = result_in
-        textView_r_out.text = CalculatingTheResult()
+        textCalculateAndResault.text = result_in
+        textResaultNow.text = CalculatingTheResult()
 
     }
 
     fun del_all_text(v: View) {
-        textView_r = findViewById(R.id.result)
-        textView_r_out = findViewById(R.id.result_output)
-        val res = 5
+        textCalculateAndResault = findViewById(R.id.result)
+        textResaultNow = findViewById(R.id.result_output)
         val text_res = ""
-        textView_r.text = text_res
-        textView_r_out.text = text_res
+        textCalculateAndResault.text = text_res
+        textResaultNow.text = text_res
         val editor = sharedpreferences.edit()
         editor.putString(KEY_RESULT_IN, text_res)
         editor.putString(KEY_RESULT_OUT, text_res)
         editor.apply()
-        textView_r.textSize = 50F
-        textView_r_out.textSize = 40F
-        textView_r.setPadding(15,0,15,20)
-        textView_r_out.setPadding(15,0,15,40)
 
     }
 //    override fun onAnimationEnd(animation: Animator) {
@@ -180,8 +145,8 @@ class MainActivity : AppCompatActivity() {
 //    }
 
     fun fun_equally(view: View) {
-        textView_r_out = findViewById(R.id.result_output)
-        textView_r = findViewById(R.id.result)
+        textResaultNow = findViewById(R.id.result_output)
+        textCalculateAndResault = findViewById(R.id.result)
         val result = CalculatingTheResult()
         val editor = sharedpreferences.edit()
 //        val scaleXAnimator = ObjectAnimator.ofFloat(textView_r_out, "translationY", 0.5f)
@@ -220,10 +185,10 @@ class MainActivity : AppCompatActivity() {
 
 
         var text_res = ""
-        textView_r.text = result
+        textCalculateAndResault.text = result
         editor.putString(KEY_RESULT_IN, result)
         editor.apply()
-        textView_r_out.text = text_res
+        textResaultNow.text = text_res
     }
 
     private fun CalculatingTheResult(): String {
@@ -401,32 +366,19 @@ class MainActivity : AppCompatActivity() {
         val editor = sharedpreferences.edit()
         var result_in = sharedpreferences.getString(KEY_RESULT_IN, "").toString()
         var result_out = sharedpreferences.getString(KEY_RESULT_OUT, "").toString()
-        textView_r = findViewById(R.id.result)
+        textCalculateAndResault = findViewById(R.id.result)
         if (result_in.isNotEmpty()){
             result_in = result_in.subSequence(0,result_in.length-1).toString()
             editor.putString(KEY_RESULT_IN, result_in)
             editor.putString(KEY_RESULT_OUT, result_in)
             editor.apply()
-            if (result_in.length >11){
-                textView_r.textSize = 30F
-                textView_r_out.textSize = 25F
-                textView_r.setPadding(15,33,15,50)
-                textView_r_out.setPadding(15,20,15,50)
-
-                if(result_in.length >20){
-                    result_in = result_in.subSequence(result_in.length-20,result_in.length).toString()
-                }
-            }
-            else{
-                textView_r.textSize = 50F
-                textView_r_out.textSize = 40F
-                textView_r.setPadding(15,0,15,20)
-                textView_r_out.setPadding(15,0,15,40)
+            if (result_in.length >20){
+                result_in = result_in.subSequence(result_in.length-20,result_in.length).toString()
             }
 
+            textCalculateAndResault.text = result_in
+            textResaultNow.text = CalculatingTheResult()
 
-            textView_r.text = result_in
-            textView_r_out.text = CalculatingTheResult()
         }
 
 

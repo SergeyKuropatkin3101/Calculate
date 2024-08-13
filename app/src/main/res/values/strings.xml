@@ -23,5 +23,7 @@
     <string name="text_equally">=</string>
     <string name="text_result_output"></string>
     <string name="DivisionBy0">Деление на 0!</string>
+    <string name="all_numbers">1234567890</string>
+    <string name="zero">0</string>
 
 </resources>

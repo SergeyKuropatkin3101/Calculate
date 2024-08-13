@@ -14,39 +14,49 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.34" />
+        app:layout_constraintGuide_percent="0.25" />
 
 
     <TextView
         android:id="@+id/result"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
         android:text="@string/text_result"
         android:paddingEnd="15dp"
         android:paddingStart="15dp"
+        android:lines="1"
+        app:autoSizeMaxTextSize="60sp"
+        app:autoSizeMinTextSize="40sp"
+        app:autoSizeStepGranularity="10sp"
+        app:autoSizeTextType="uniform"
+        android:gravity="center_vertical|end"
         style = "@style/style_result"
         app:layout_constraintBottom_toTopOf="@id/result_output"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/margin_top"
-        android:paddingBottom = "10dp"/>
+
+        app:layout_constraintVertical_weight="0.8"/>
 
     <TextView
         android:id="@+id/result_output"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
         android:text="@string/text_result_output"
         android:paddingEnd="15dp"
         android:paddingStart="15dp"
         style = "@style/style_result_output"
-
+        android:lines="1"
+        app:autoSizeMaxTextSize="50sp"
+        app:autoSizeMinTextSize="30sp"
+        app:autoSizeStepGranularity="10sp"
+        app:autoSizeTextType="uniform"
+        android:gravity="end|center_vertical"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/result"
         app:layout_constraintBottom_toTopOf="@+id/group_buttons_vertical"
-        android:paddingBottom = "20dp"/>
+        app:layout_constraintVertical_weight="0.8"/>
 
 
     <androidx.constraintlayout.widget.Group
@@ -61,7 +71,8 @@ button_mul,button_1,button_2,button_3,button_00,button_0,button_comma,button_equ
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/result_output" />
+        app:layout_constraintTop_toBottomOf="@id/result_output"
+        app:layout_constraintVertical_weight="3.5"/>
 
     <Button
         android:id="@+id/button_del_all"
